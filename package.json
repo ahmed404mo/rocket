@@ -1,0 +1,56 @@
+{
+  "name": "Rocket",
+  "version": "1.0.0",
+  "description": " space rocket",
+  "main": "main.cjs",
+  "author": "Gamesara",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.gamesara.citybuilder",
+    "productName": "GameCity",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "GameSara City",
+      "perMachine": false,
+      "deleteAppDataOnUninstall": true,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "runAfterFinish": true
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!node_modules/**/*",
+      "node_modules/three/**/*",
+      "node_modules/@types/**/*"
+    ],
+    "asar": true
+  },
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.13.3"
+  }
+}
